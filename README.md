@@ -1,2 +1,2 @@
-# krrf
-KRRF: Kinodynamic Rapidly-exploring Random Forest algorithm for multi-goal motion planning
+# KRRF planner
+The source codes and datasets will be provided after publication.
