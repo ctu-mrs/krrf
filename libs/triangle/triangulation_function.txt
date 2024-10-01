@@ -1,0 +1,82 @@
+char * triswitches = (char *) "zQp";
+
+for (int var = 0; var < obstacles_vec.size(); ++var) {
+		INFO("create object " << var)
+
+		Obstacle testing_obstacle = obstacles_vec[var];
+		int num_outvertices = testing_obstacle.point_indexes.size();
+
+		struct triangulateio in;
+		struct triangulateio out;
+		struct triangulateio vorout;
+
+		//fill in struct
+		in.numberofpoints = num_outvertices;
+		in.pointlist = (REAL*) trimalloc((int) (num_outvertices * 2 * sizeof(REAL)));
+		in.pointmarkerlist = (int*) trimalloc((int) (num_outvertices * sizeof(int)));
+		in.numberofsegments = num_outvertices;
+		in.segmentlist = (int*) trimalloc((int) (num_outvertices * 2 * sizeof(int)));
+		in.numberofpointattributes = 0;
+		in.segmentmarkerlist = NULL;
+		in.numberofholes = 0;
+		in.numberofregions = 0;
+
+		in.pointattributelist = NULL;
+		for (int var = 0; var < num_outvertices; ++var) {
+			int point_index = testing_obstacle.point_indexes[var];
+			in.pointlist[2 * var] = points_vec[point_index].x;
+			in.pointlist[2 * var + 1] = points_vec[point_index].y;
+			//mesh_obstacle->addVertex(points_vec[point_index].x, points_vec[point_index].y, 0);
+			//INFO("add vertex "<<var<<" point index "<<point_index);
+			in.pointmarkerlist[var] = point_index;
+			in.segmentlist[var * 2] = var;
+			in.segmentlist[var * 2 + 1] = var + 1;
+		}
+		in.segmentlist[(num_outvertices - 1) * 2 + 1] = 0;
+
+		//INFO("malloc done")
+		//fill out strucdt
+		out.pointlist = NULL;
+		out.pointmarkerlist = NULL;
+		out.trianglelist = NULL;
+		out.neighborlist = NULL;
+		out.segmentlist = NULL;
+		out.segmentmarkerlist = NULL;
+		//create corout struct
+
+		//INFO("before triangulation")
+		triangulate(triswitches, &in, &out, &vorout);
+		//INFO("after triangulation")
+
+		for (int var = 0; var < out.numberoftriangles; ++var) {
+			int cor1 = out.trianglelist[var * 3];
+			int cor2 = out.trianglelist[var * 3 + 1];
+			int cor3 = out.trianglelist[var * 3 + 2];
+			//INFO("real "<<cor1<<" "<<cor2<<" "<<cor3)
+			//INFO("orig "<<out.pointmarkerlist[cor1]<<" "<<out.pointmarkerlist[cor2]<<" "<<out.pointmarkerlist[cor3])
+			//mesh_obstacle->addFace(cor1, cor2, cor3);
+			mesh_obstacle->addFace(out.pointmarkerlist[cor1], out.pointmarkerlist[cor2], out.pointmarkerlist[cor3]);
+			//INFO("add face "<<var<<" with vertices "<<cor1<<" "<<cor2<<" "<<cor3)
+			Obstacle tri_obstacle;
+			tri_obstacle.point_indexes.push_back(out.pointmarkerlist[cor1]);
+			tri_obstacle.point_indexes.push_back(out.pointmarkerlist[cor2]);
+			tri_obstacle.point_indexes.push_back(out.pointmarkerlist[cor3]);
+			//mesh_obstacle.ad
+
+		}
+
+		//INFO("free memory")
+		//ERROR("free memory error")
+
+		//free memory
+		trifree(in.pointlist);
+		trifree(in.pointmarkerlist);
+		trifree(in.segmentlist);
+		trifree(out.pointlist);
+		trifree(out.pointmarkerlist);
+		trifree(out.trianglelist);
+		trifree(out.neighborlist);
+		trifree(out.segmentlist);
+		trifree(out.segmentmarkerlist);
+		//INFO("free memory done")
+	}

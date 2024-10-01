@@ -1,0 +1,17 @@
+
+- generate all frame sequence using genvideo 1 to folder ./Video
+
+  ```
+  ./test_krrf 1 -srand 100001 -map ./maps/potholes.fig.tri -target ./targets/potholes.fig_5.txt -problem 0 -draw 1 -iters 1 -dtg 50 -mxtime 1.5 -mcp 10 -exprob 0.7 -regexpl 100 -size 5000 -o potholes.fig_5_run_0 -robot :I10x50 -pt 1 -genvideo 1
+  ```
+- generate N start and goal pairs using genconfig N
+
+  ```
+  ./test_krrf 1 -map ./maps/potholes.fig.tri -sgradius 20 -genconfig N -target _ -problem 0 -iters 1 -dtg 50 -mxtime 1 -mcp 1 -exprob 0 -regexpl 100 -size 5000 -o $3 -robot :I10x50 -pt 2
+  ```
+- plot the points already generated using test_kkrrf_draw
+
+  ```
+  make test_krrf_draw
+  ./test_krrf_draw 1 -map ./maps/potholes.fig.tri -target ./targets/potholes.fig_5.txt -traj ./krrf_out_krrf.nodes -problem 0 -draw 0 -iters 1 -dtg 50 -mxtime 1.5 -mcp 10 -exprob 0.7 -regexpl 100 -size 10000 -o KRRF_Potholes_5 -robot :I10x50 -pt 2
+  ```

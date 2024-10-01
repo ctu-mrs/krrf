@@ -1,0 +1,23 @@
+Nearest Neighbor Library for Motion Planning
+
+University of Illinois
+
+Contributors:  Anna Yershova
+               Steven M. LaValle
+
+
+The following directories are included in this distribution:
+
+include:   The C++ header files for DNN
+lib:       Location of the DNN library (libDNN.a), when compiled
+src:       The source code of the library
+test:     Sample code that uses the library
+
+
+INSTALLATION:
+
+1. From the top-level directory of DNN, run "make". In lib, the
+libDNN.a file will be generated. Any programs that are written using
+DNN should be linked with this file. An executable in test directory
+should also be generated.
+

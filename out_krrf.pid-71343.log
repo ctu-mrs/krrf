@@ -1,0 +1,87 @@
+GIT 440cd1613142521218b0301b5d8e07baabeecbef
+
+Argv[0]: 1
+Argv[1]: -map
+Argv[2]: ./maps/potholes.fig.tri
+Argv[3]: -target
+Argv[4]: ./targets/potholes.fig_5.txt
+Argv[5]: -problem
+Argv[6]: 0
+Argv[7]: -draw
+Argv[8]: 1
+Argv[9]: -iters
+Argv[10]: 1
+Argv[11]: -dtg
+Argv[12]: 50
+Argv[13]: -mxtime
+Argv[14]: 1.5
+Argv[15]: -mcp
+Argv[16]: 10
+Argv[17]: -exprob
+Argv[18]: 0.7
+Argv[19]: -regexpl
+Argv[20]: 100
+Argv[21]: -size
+Argv[22]: 10000
+Argv[23]: -o
+Argv[24]: out_krrf
+Argv[25]: -robot
+Argv[26]: :I10x50
+Argv[27]: -pt
+Argv[28]: 2
+Argv[29]: -amax
+Argv[30]: 10
+srand=-1
+Random seed is time 1725362797
+robotType: CRobotCarLike: rrtPlanning::CRobotCarLike::CRobotCarLike(const State&)
+Reading targets
+567.021	-281.189	4.23963
+544.205	-101.905	1.90551
+429.743	-52.9162	3.62984
+518.641	-588.919	6.16934
+348.267	-588.01	1.34871
+
+
+Targets read
+Loaded 94 from ./maps/potholes.fig.tri
+Map dimension is DIM{x=-10:910, y=-910:10, z=0:0, vol=0}
+Iteration 0
+Trying Flann initialization
+
+Flann size 5
+Finished Flann initialization
+
+Params 100 10 0.7 1.5  5 50
+Trajectory extracted
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+Computing the tour using guiding
+Successful segment 0
+Successful segment 1
+Replanning seq 2
+Replanning seq 2
+Successful segment 1
+Successful segment 2
+Successful segment 3
+Successful segment 4
+Index0 212 0 213 357.244
+Index0 4 0 5 165.881
+Index0 137 0 138 850.233
+Index0 98 0 99 148.744
+Index0 99 0 100 838.161
+drawing KRRF control trees!!!! 
+HEEEERE drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+Printing final route to file.
+Done printing final route to file.

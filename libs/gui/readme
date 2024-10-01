@@ -1,0 +1,67 @@
+
+painter
+
+the painter consists of several painters, like cairo or sdl. 
+Each painter is derived from CPainterBase and has its own virtual function
+for drawing. 
+
+Example:
+
+CPainterBase *pa = new CPainterCairo...
+
+pa->begin();
+pa->draw(...);
+pa->close();
+
+now, if we want to paint to SDL window, we only replace first line like this:
+CPainterBase *pa = new CPainterGui...
+
+that's all!
+
+
+Available painter:
+
+----------------------------------------------------------------------------------
+class: CPainterCairo2
+cairo:png .. draw to png file, very slow
+cairo:pdf .. draw to pdf, very fast
+
+where CPainterCairo2 will paint to pdf or png is choosen in constructor
+
+----------------------------------------------------------------------------------
+
+class: CPainterGui
+
+painting to sdl window
+
+----------------------------------------------------------------------------------
+
+class: CPainterDump
+
+auxiliary painter, it 'paints' to txt file, so it can be uses as a logger for painting.
+
+example:
+CPainterDump *pdump = new CPainterDump("dumpFile");
+CPainterBase *pa = new CPainterGui(...,pdump);
+
+pa->begin();
+pa->draw...
+...
+pa->close();
+
+now, all painting command are also copy to dump painter which stores them into "dumpFile" file.
+
+if we want to load "dumpFile" and repeat the commands for painting to png, we can use
+test program with parameters:
+./test 3 dumpFile "mask" 1
+
+Some keys can change behaviour of gui:
+'s' stops painting to the screen ('s' also enables it)
+'g' toggle grid (not working properly yet)
+
+
+
+see main.cc for details
+
+
+

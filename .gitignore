@@ -1,0 +1,5 @@
+*.o
+out_krrf.*
+test_krrf
+gitv.h
+

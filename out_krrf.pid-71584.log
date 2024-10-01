@@ -1,0 +1,99 @@
+GIT 440cd1613142521218b0301b5d8e07baabeecbef
+
+Argv[0]: 1
+Argv[1]: -map
+Argv[2]: ./maps/potholes.fig.tri
+Argv[3]: -target
+Argv[4]: ./targets/potholes.fig_10.txt
+Argv[5]: -problem
+Argv[6]: 0
+Argv[7]: -draw
+Argv[8]: 1
+Argv[9]: -iters
+Argv[10]: 1
+Argv[11]: -dtg
+Argv[12]: 50
+Argv[13]: -mxtime
+Argv[14]: 1.5
+Argv[15]: -mcp
+Argv[16]: 10
+Argv[17]: -exprob
+Argv[18]: 0.7
+Argv[19]: -regexpl
+Argv[20]: 100
+Argv[21]: -size
+Argv[22]: 10000
+Argv[23]: -o
+Argv[24]: out_krrf
+Argv[25]: -robot
+Argv[26]: :I10x50
+Argv[27]: -pt
+Argv[28]: 2
+Argv[29]: -amax
+Argv[30]: 10
+srand=-1
+Random seed is time 1725362919
+robotType: CRobotCarLike: rrtPlanning::CRobotCarLike::CRobotCarLike(const State&)
+Reading targets
+431.216	-187.56	0.298202
+533.706	-442.789	2.60534
+51.6715	-418.192	3.89871
+600.363	-172.232	6.13706
+603.068	-150.791	5.15229
+735.742	-354.801	5.80862
+477.409	-54.336	4.7491
+128.267	-363.973	3.50454
+106.872	-330.108	1.96302
+590.738	-801.957	1.97064
+
+
+Targets read
+Loaded 94 from ./maps/potholes.fig.tri
+Map dimension is DIM{x=-10:910, y=-910:10, z=0:0, vol=0}
+Iteration 0
+Trying Flann initialization
+
+Flann size 10
+Finished Flann initialization
+
+Params 100 10 0.7 1.5  10 50
+Trajectory extracted
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+Computing the tour using guiding
+Successful segment 0
+Successful segment 1
+Successful segment 2
+Successful segment 3
+Successful segment 4
+Successful segment 5
+Successful segment 6
+Successful segment 7
+Successful segment 8
+Successful segment 9
+Index0 26 0 27 363.498
+Index0 202 0 203 362.026
+Index0 71 0 72 678.795
+Index0 307 0 308 824.848
+Index0 73 0 74 969.686
+Index0 1 0 2 9.09974
+Index0 43 0 44 839.806
+Index0 1 0 2 23.0235
+Index0 38 0 39 346.591
+Index0 8 0 9 157.28
+drawing KRRF control trees!!!! 
+HEEEERE drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+drawing trajectory
+drawing KRRF control trees!!!! 
+drawing KRRF control trees!!!! 
+Printing final route to file.
+Done printing final route to file.
