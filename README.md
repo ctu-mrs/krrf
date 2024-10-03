@@ -11,6 +11,13 @@ sudo apt-get install libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev  libgsl
 
 # How to compile
 
+Go to src:
+
+```
+cd src
+```
+
+
 Run
 
 ```
