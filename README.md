@@ -4,10 +4,17 @@ Final route for 50 cities with expanded trees
 ![Example of Multi-goal motion planning with Car-like robot](./docs/car_krrf_bigBT.000008.png)
 
 # Dependencies
-Install SDL and gsl libraries:
+
+##  Install SDL and gsl libraries:
 ```
 sudo apt-get install libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev  libgsl-dev
 ```
+
+## RAPID collision detection library 
+Download the library from https://gamma.cs.unc.edu/OBB/
+and unzip it into the src/libs/rapid directory
+
+
 
 # How to compile
 
