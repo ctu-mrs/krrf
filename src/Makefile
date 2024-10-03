@@ -63,7 +63,7 @@ DIS_OBJS_FLANN=$(ROBOT_OBJS) $(BASIC_OBJS) test_flann.o
 
 #CXXDEFINE+=-Wall #-pedantic -Wno-long-long
 LDFLAGS+=-L/usr/local/lib -lpthread -lm 
-LDFLAGS+=-Llibs/op -lOPLoader 
+#LDFLAGS+=-Llibs/op -lOPLoader 
 #LDFLAGS+=-lrt
 
 SRC=$(wildcard *.cc)
