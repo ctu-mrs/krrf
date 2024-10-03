@@ -1,52 +1,12 @@
  
 $(shell echo "#define GIT_VERSION \""`git rev-parse HEAD`\" > gitv.h)  
 
-#CXX=colorgcc
-#CXX=g++
-CXX=ccache g++
+CXX=g++
 CXXINCLUDE+= -std=c++11 #-I/usr/local/include
-TARGET=rbtr
-
-#CXXINCLUDE+=-I/home/petr2/opt/include
-#LDFLAGS+=-L/home/petr2/opt/lib
-
-#CXXINCLUDE+=-I/home/petr2/planning-template/flann/src/cpp/flann
-#LDFLAGS+=-L/home/petr2/planning-template/flann/build/lib
-
 
 CXXINCLUDE+= -Ilibs/gui3d -I./libs -I./libs/mpnn2 -Ilibs/libsvm -I./libs/flann
-LDFLAGS+= -llz4 -Llibs/gui -lgui  -L./libs/rapid -lRAPID -L./libs/mpnn2 -lDNN -Llibs/libsvm #-llocalsvm #-lode
-
-#for ompl, assuming it is in opt/include
-#CXXINCLUDE+=-I/home/petr2/opt/include/
-#LDFLAGS+=-L/home/petr2/opt/lib #-lompl
-#CXXINCLUDE+=-I/usr/include/eigen3   
-
-#CXXINCLUDE+=-I/home/vojta/opt/include/
-#LDFLAGS+=-L/home/vojta/opt/lib -lompl
-
-#CXXINCLUDE+=-I/storage/praha1/home/vonasek/opt/include -fPIC 
-#LDFLAGS+=-lboost_system -lboost_serialization
-#LDFLAGS+=-L/software/boost/1.68.0/intel-17.0.1/lib -lboost_system
-
+LDFLAGS+= -llz4 -Llibs/gui -lgui  -L./libs/rapid -lRAPID -L./libs/mpnn2 -lDNN -Llibs/libsvm 
 LDFLAGS+= -lflann -lflann_cpp 
-
-
-
-#for OMPL at Metacenter
-
-#CXXINCLUDE+=-I/storage/praha1/home/vonasek/opt/include/ompl-1.5 -fPIC
-#CXXINCLUDE+=-I/storage/praha1/home/vonasek/opt/include/eigen3 -fPIC
-#LDFLAGS+=-L/storage/praha1/home/vonasek/opt/lib
-
-#GITVERSION:=$(shell git rev-parse HEAD)
-#CXXINCLUDE+=-DGIT_VERSION=\"$(GITVERSION)\"
-
-
-#CXXINCLUDE+=-I./libs/
-#LDFLAGS+=./libs/ozcollide/libozcollide.a
-
-#LDFLAGS+=-L./libs/libhungarian/ -lhungarian
 
 OPSYS=$(shell uname)
 ifeq ($(OPSYS),Linux) 
@@ -64,7 +24,6 @@ LDFLAGS+=`pkg-config cairo --libs`
 CXXINCLUDE+=`gsl-config --cflags`  
 LDFLAGS+=`gsl-config --libs`  
 
-
 #LDFLAGS+=-pg
 #CXXINCLUDE+=-pg
 
@@ -76,11 +35,10 @@ CXXDEFINE+=-O3
 ROBOT_OBJS=CRobot2D.o CRobotCarLike.o CRobotDiff.o CRobotBike.o CRobot3D.o
  
 
-BASIC_OBJS= CParseArgs.o #CPSO.o perm.o quasiRand.o pca.o art3D.o art.o 
+BASIC_OBJS= CParseArgs.o 
 BASIC_OBJS+=dijkstra.o mapr.o map3r.o map.o painting.o ut.o Voronoi.o WLog.o blender.o types.o polygonUtils.o mesh.o timerN.o
 BASIC_OBJS+=libs/triangle/triangle.o
-#BASIC_OBJS+= rrt3.o rrt3Bidirect.o rrt3DD.o rrtnD.o gsl.o 
-BASIC_OBJS+=options2D.o options3D.o rrt2D.o #prm2D.o
+BASIC_OBJS+=options2D.o options3D.o rrt2D.o 
 BASIC_OBJS+=staticObstacles2D.o random.o
 
 
@@ -173,13 +131,13 @@ ddijkstra:
 	$(MAKE) -C libs/dijkstra
 
 clean:
-	rm -f $(OBJS) $(TARGET) *.core r2 r3 tpart tprm rmod texploration texploration2 libmpexploration.a rdis r3dis ompl3 ompl2 test test_P test_krrf test_krrf_draw
+	rm -f $(OBJS)  *.core r2 r3 tpart tprm rmod texploration texploration2 libmpexploration.a rdis r3dis ompl3 ompl2 test test_P test_krrf test_krrf_draw LKH
 
 cleanpng:
 	rm -f *.png
 
 cleanall:
-	rm -f $(OBJS) $(TARGET) $(TARGET).core 
+	rm -f $(OBJS) 
 	$(MAKE) -C libs/gui clean
 	$(MAKE) -C libs/gui3d clean
 	$(MAKE) -C libs/libsvm clean
