@@ -4,7 +4,7 @@ $(shell echo "#define GIT_VERSION \""`git rev-parse HEAD`\" > gitv.h)
 CXX=g++
 CXXINCLUDE+= -std=c++11 #-I/usr/local/include
 
-CXXINCLUDE+= -Ilibs/gui3d -I./libs -I./libs/mpnn2 -Ilibs/libsvm -I./libs/flann
+CXXINCLUDE+=  -I./libs -I./libs/mpnn2 -Ilibs/libsvm -I./libs/flann
 LDFLAGS+= -llz4 -Llibs/gui -lgui  -L./libs/rapid -lRAPID -L./libs/mpnn2 -lDNN -Llibs/libsvm 
 LDFLAGS+= -lflann -lflann_cpp 
 
@@ -97,7 +97,7 @@ test_krrf_draw: support $(DIS_OBJS_KRRF_DRAW)
 #test_flann: support $(DIS_OBJS_FLANN) 
 #	$(CXX) $(DIS_OBJS_FLANN) $(LDFLAGS) -o test_flann
 
-support: opproblem mytriangle guii rapidd mpnnn $(BASIC_OBJS)
+support: mytriangle guii rapidd mpnnn $(BASIC_OBJS)
 
 
 guii:
@@ -139,12 +139,9 @@ cleanpng:
 cleanall:
 	rm -f $(OBJS) 
 	$(MAKE) -C libs/gui clean
-	$(MAKE) -C libs/gui3d clean
-	$(MAKE) -C libs/libsvm clean
 	$(MAKE) -C libs/rapid clean
 	$(MAKE) -C libs/dijkstra clean
 	$(MAKE) -C libs/mpnn2 clean
-	$(MAKE) -C libs/op clean
 	$(MAKE) -C libs/triangle clean
 
 cleanlog:

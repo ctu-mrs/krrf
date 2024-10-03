@@ -24,9 +24,9 @@ Run
 make
 ```
 
-to create planner binary. Result of the make process should be two binaries in the root:
-1. ./LKH (TSP solver, which is compiled in ./libs/LKH/LKH-2.0.10/)
-2. ./test_krrf which is our KRRF planner
+to create planner binary. Result of the make process should be two binaries in src/
+1. LKH (TSP solver, which is compiled in ./libs/LKH/LKH-2.0.10/)
+2. test_krrf which is the KRRF planner
 
 
 # How to run KRRF. 

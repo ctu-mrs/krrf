@@ -9,7 +9,6 @@
 #include <sstream>
 #include <string>
 
-//#include <ode/ode.h>
 #include "gui/CPainters.h"
 #include "types.h"
 #include "map.h"
@@ -21,13 +20,11 @@
 #include "CRobot3D.h"
 #include "rrtstate.h"
 
-#include "gui3d/CPainters3D.h"
 
 namespace rrtPlanning {
 
 using std::list;
 using namespace CPainters;
-using namespace Painter3D;
 
 typedef enum _TPainter {
 	GUI = 0,
@@ -40,8 +37,6 @@ typedef enum _TPainter {
 
 
 gPoint tgp(const TPoint &p, const bool resizeable=false);
-gPoint3 tgp3(const TPoint3 &p);
-std::vector<gPoint3> tgp3(const std::vector<TPoint3> &pts);
 
 
 void writeLights(const vector<TLight> &lights, std::ofstream &ofs);
@@ -1084,6 +1079,7 @@ void povDraw3DNodes(const std::vector< TNode *> &tree, RT &robot,
     }
 }
 
+/*
 
 template<typename RT>
 void povDeclareRRTNodes(const vector<TNode *> &tree, RT &robot, std::ofstream &ofs,const bool noshadow=false, const bool intermediatePoints=true) {
@@ -1092,7 +1088,6 @@ void povDeclareRRTNodes(const vector<TNode *> &tree, RT &robot, std::ofstream &o
     povDraw3DNodes(tree,robot, ofs, noshadow, intermediatePoints);    
     ofs << "}// end of rrt\n";
 }
-
 
 
 template<typename RRTT, typename RT>
@@ -1107,53 +1102,10 @@ void povDeclareRRT_BidirectNodes(const  RRTT &rrt, RT &robot, std::ofstream &ofs
     ofs << "}\n";
 }
 
+*/
 
 
 
-
-
-
-
-void draw3Map(CPainter3D *pa, const std::vector< std::vector<TPoint3 > > &tr);
-
-
-
-template<typename RT, typename ST>
-void draw3Robot(CPainter3D *pa, RT &robot, const ST &state, const CColor &color) {
-
-	if (pa) {
-		double rmatrix[3][3];
-		double tvector[3];
-		RAPID_model *mmm = robot.getRapidModel(rmatrix,tvector,state);
-		std::vector< std::vector< TPoint3 > > tr(robot.getTriangles());
-		for(int i=0;i<(int)tr.size();i++) {
-			translate(tr[i][0],rmatrix,tvector);
-			translate(tr[i][1],rmatrix,tvector);
-			translate(tr[i][2],rmatrix,tvector);
-			pa->drawTriangle(tgp3(tr[i][0]),tgp3(tr[i][1]),tgp3(tr[i][2]),color);
-		}
-		tr.clear();
-        mmm = NULL;
-	}
-}
-
-
-/* draws a trajectory which was previously smoothed - hence there is no valid input informations. The
-   * trajectory is painter as a simple polyline .. */
-template<typename RT>
-void draw3SmoothTrajectory(CPainter3D *pa, const std::vector< RRTState<typename RT::State, typename RT::Input> > &nodes, 
-		RT &robot, const int numPointOnEdge = 10) {
-
-	if (pa) {
-    	std::vector< TPoint3 > pts;
-		for(int i=0;i<(int)nodes.size();i++) {
-			pts.push_back(robot.getRefPoint(nodes[i].state));
-		}
-		pa->drawLine(tgp3(pts),0.02,CColor("red2"));
-	}
-}
-
-void draw3Surface(CPainter3D *pa, const std::vector<TPoint3> &pts, const int indicesSize, int *indices);
 
 
 /** draws PRM.
@@ -1198,7 +1150,6 @@ void drawPrm(PRMT &prm, RT &robot, CPainterBase *pa, const int edgeType) {
 
 /** draws PRM.
   status = -1 -> all edges, otherwise only edges with given status
-  */
 template<typename PRMT, typename RT>
 void povDrawPrm(PRMT &prm, RT &robot, std::ofstream &ofs, const int drawPts, const int drawEdges, const int whichStatus = -2) {
     typedef typename PRMT::PState PState;
@@ -1243,9 +1194,10 @@ void povDrawPrm(PRMT &prm, RT &robot, std::ofstream &ofs, const int drawPts, con
 }
 
 
+  */
 
 
-
+/*
 template<typename ST, typename RT>
 void drawPRMTraj(const std::vector< ST > &states, RT &robot, CPainterBase *pa) {
 	if (pa) {
@@ -1264,7 +1216,7 @@ void drawPRMTraj(const std::vector< ST > &states, RT &robot, CPainterBase *pa) {
 void raw_draw_cylinder(const TPoint3 &p1in, const TPoint3 &p2in, const double radius, const int resolution, ofstream &ofs);
 void raw_drawPl(const vector<TPoint3> &pts, ofstream &ofs, const double radius);
 
-
+*/
 
 
 } // namespace

@@ -9,7 +9,6 @@
 
 
 
-#include "libs/op/dataset_loader_obst.h"
 extern "C" {
 #include "libs/triangle/triangle.h"
 

@@ -19,9 +19,6 @@ gPoint tgp(const TPoint &p, const bool resizeable) {
 	return gPoint(p.x, p.y);
 }
 
-gPoint3 tgp3(const TPoint3 &p) {
-	return gPoint3(p.x,p.y,p.z);
-}
 
 void drawTriangle(const Triangle &t,  const CColor &lineColor, const CColor &fillColor, CPainterBase *pa) {
     vector<TPoint> pts;
@@ -41,14 +38,6 @@ void drawRobot(const std::vector< Triangle > &pts, CPainterBase *pa, const int t
 
 
 
-std::vector<gPoint3> tgp3(const std::vector<TPoint3> &pts) {
-	std::vector<gPoint3> res;
-	res.reserve(pts.size());
-	for(int i=0;i<(int)pts.size();i++) {
-		res.push_back(tgp3(pts[i]));
-	}
-	return res;
-}
 
 void drawColorMap(CColorMap &c, CPainterBase *pa) {
 
@@ -905,34 +894,6 @@ void povDeclareConvexHull(const std::vector< std::vector<TPoint3> > &triangles, 
     }
     ofs << "pigment { color rgbf colorHull }\n";
     ofs << "}\n";
-}
-
-
-
-void draw3Map(CPainter3D *pa, const std::vector< std::vector<TPoint3 > > &tr) {
-	if (pa) {
-		for(int i=0;i<(int)tr.size();i++) {
-			pa->drawTriangle(tgp3(tr[i][0]),tgp3(tr[i][1]),tgp3(tr[i][2]),CColor("royalBlue1"));
-		}
-	}
-}
-
-
-void draw3Surface(CPainter3D *pa, const std::vector<TPoint3> &pts, const int indicesSize, int *indices) {
-	if (pa) {
-		int idx = 0;
-		for(int i=0;i<indicesSize/3;i++) {
-            CColor a,b,c;
-            a.setFloatRGB(0.9,0.8,0.66);
-            b.setFloatRGB(0.6,0.86,0.3);
-            c.setFloatRGB(0.6,0.3,1);
-			pa->drawTriangle(tgp3(pts[indices[3*idx+0]]),
-					tgp3(pts[indices[3*idx+1]]),
-					tgp3(pts[indices[3*idx+2]]),
-					a,b,c);
-			idx++;
-		}
-	}
 }
 
 
