@@ -5,7 +5,7 @@
 #include <vector>
 #include <list>
 #include <algorithm>
-#include "map.h"
+//#include "map.h"
 
 namespace rrtPlanning {
 

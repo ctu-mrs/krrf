@@ -1,7 +1,7 @@
  
 $(shell echo "#define GIT_VERSION \""`git rev-parse HEAD`\" > gitv.h)  
 
-CXX=g++
+CXX=ccache g++
 CXXINCLUDE+= -std=c++11 #-I/usr/local/include
 
 CXXINCLUDE+=  -I./libs -I./libs/mpnn2 -Ilibs/libsvm -I./libs/flann
@@ -36,7 +36,7 @@ ROBOT_OBJS=CRobot2D.o CRobotCarLike.o CRobotDiff.o CRobotBike.o CRobot3D.o
  
 
 BASIC_OBJS= CParseArgs.o 
-BASIC_OBJS+=dijkstra.o mapr.o map3r.o map.o painting.o ut.o Voronoi.o WLog.o blender.o types.o polygonUtils.o mesh.o timerN.o
+BASIC_OBJS+=dijkstra.o mapr.o map3r.o painting.o ut.o Voronoi.o WLog.o types.o polygonUtils.o mesh.o timerN.o
 BASIC_OBJS+=libs/triangle/triangle.o
 BASIC_OBJS+=options2D.o options3D.o rrt2D.o 
 BASIC_OBJS+=staticObstacles2D.o random.o
