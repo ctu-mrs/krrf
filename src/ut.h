@@ -20,8 +20,6 @@
 #include "rapid/RAPID.H"
 #include "multiann.h"
 #include "ANN.h"
-//#include "rrtstate.h"
-//#include "CRobot3D.h"
 #include "CStat.h"
 
 
@@ -523,30 +521,6 @@ void inputFromStates(const ST &s1, const ST &s2, const double dt, IN &in, const 
     }
 }
 
-
-/* 
-template<typename IN>
-bool isUniqueInput(const std::vector< TNode *> &tree, const int idx,  const IN &input, const double resolution) {
-
-    for(int i=0;i<(int)tree[idx]->next.size();i++) {
-        const int nextidx = tree[idx]->next[i];
-        const IN &in(tree[ nextidx ]->input);
-        if (in.size() == input.size()) {
-            bool isSame = true;
-            for(int j=0;j<(int)in.size() && isSame;j++) {
-                if (fabs(in[j]-input[j]) > resolution) {
-                    isSame = false;
-                }
-            }
-            if (isSame) {
-                //WDEBUG("inputs " << printString(input) << " and " << printString(in) << " are same!");
-                return false;
-            }
-        }
-    }
-    return true;
-}
-*/
 
 template<typename ST, typename RT>
 std::vector<TPoint> states2pts2(const std::vector<ST> &states, const RT &robot) {
